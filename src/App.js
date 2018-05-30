@@ -30,11 +30,11 @@ class App extends Component {
         {isFetching && items.length === 0 && <h2>Loading...</h2>}
         <List>
           {items.map((item, i) => 
-            <ListItem key={i}>
+            <ListItem button onClick={(e) => window.open(item.url, '_blank')} key={i}>
               <Avatar>
                 {item.title.substring(0, 1)}
               </Avatar>
-              <ListItemText primary={item.title} secondary={`${item.score}점 by ${item.by} / ${moment().diff(moment.unix(item.time), 'hours')}시간 전 /${item.descendants}개의 코멘트`} />
+              <ListItemText primary={item.title} secondary={`${item.score}점 by ${item.by} / ${moment().diff(moment.unix(item.time), 'hours')}시간 전 / ${item.descendants}개의 코멘트`} />
             </ListItem>
           )}
         </List>
